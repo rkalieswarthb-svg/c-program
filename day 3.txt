@@ -1,0 +1,35 @@
+#include<stdio.h>
+int main(){
+    int students;
+    printf("Enter no.of students:");
+    scanf("%d",&students);
+    int subjects;
+    printf("Enter no.of subjects:");
+    scanf("%d",&subjects);
+    int tests;
+    printf("Enter no.of tests:");
+    scanf("%d",&tests);
+    int marks[students][subjects][tests];
+    float sum,average;
+    int i,j,k;
+    for(i=0;i<students;i++){
+        printf("Enter marks for student %d:",i+1);
+        for(j=0;j<subjects;j++){
+            for(k=0;k<tests;k++){
+                printf("\nsubject %d test %d:",j+1,k+1);
+                scanf("%d",&marks[i][j][k]);
+                
+            }
+        }
+    }
+    for(i=0;i<students;i++){
+        sum=0;
+        for(j=0;j<subjects;j++){
+            for(k=0;k<tests;k++){
+                sum+=marks[i][j][k];
+            }
+        }
+        average=sum/(subjects*tests);
+        printf("\nAverage marks of student %d =%.2f\n",i+1,average);
+    }
+    return 0;
