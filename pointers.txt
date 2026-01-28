@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+struct student {
+    char name[20];
+    int regno;
+};
+
+int main() {
+    struct student std1 = {\"Arun\", 1001}; // assigning data to structure
+
+    struct student *point = &std1; // pointing structure to pointer variable
+
+    printf(\"My name is %s \
+\", point->name);
+    printf(\"My name's memory address is %p \
+\", (void*)point->name);
+
+    printf(\"My reg no is %d \
+\", point->regno);
+    printf(\"My regno's memory address is %p \
+\", (void*)&point->regno);
+
+    return 0;
+}
