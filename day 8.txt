@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Insert at beginning
+struct Node* insertAtBeginning(struct Node *head, int value) {
+    struct Node *newNode;
+    newNode = (struct Node *)malloc(sizeof(struct Node));
+
+    newNode->data = value;
+    newNode->next = head;
+
+    return newNode;
+}
+
+// Display list
+void display(struct Node *head) {
+    while (head != NULL) {
+        printf("%d -> ", head->data);
+        head = head->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *head = NULL;
+
+    // First insertions
+    head = insertAtBeginning(head, 10);
+    head = insertAtBeginning(head, 20);
+
+    printf("After first insertions:\n");
+    display(head);
+
+    // Insert another element at beginning
+    head = insertAtBeginning(head, 5);
+
+    printf("After inserting another element at beginning:\n");
+    display(head);
+
+    return 0;
+}
