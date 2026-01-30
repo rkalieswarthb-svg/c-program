@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct name{
+    int num;
+    struct name*next;
+};
+int main(){
+    struct name*n1=(struct name*)malloc(sizeof(struct name));
+    struct name*n2=(struct name*)malloc(sizeof(struct name));
+    struct name*n3=(struct name*)malloc(sizeof(struct name));
+    scanf("%d",&n3->num);
+    scanf("%d",&n2->num);
+    scanf("%d",&n1->num);
+    n1->next=n2;
+    n2->next=n3;
+    n3->next=NULL;
+    struct name*head=n1;
+    while(head !=NULL){
+        printf(" %d----->",head->num);
+        head=head->next;
+    }
+    printf("NULL\n");
+    return 0;
+}
