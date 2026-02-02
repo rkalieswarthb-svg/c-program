@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+
+// Address structure
+struct Address {
+    char city[50];
+    int pincode;
+};
+
+// Student structure with nested Address
+struct Student {
+    int id;
+    char name[50];
+    struct Address addr;
+};
+
+int main() {
+    struct Student s;          // structure variable
+    struct Student *ptr = &s;  // pointer to structure
+
+    // Input student details
+    printf("Enter Student ID: ");
+    scanf("%d", &ptr->id);
+
+    printf("Enter Student Name: ");
+    scanf(" %[^\n]", ptr->name);   // reads string with spaces
+
+    printf("Enter City: ");
+    scanf(" %[^\n]", ptr->addr.city);
+
+    printf("Enter Pincode: ");
+    scanf("%d", &ptr->addr.pincode);
+
+    // Display student details using structure pointer
+    printf("\n--- Student Details ---\n");
+    printf("Student ID   : %d\n", ptr->id);
+    printf("Student Name : %s\n", ptr->name);
+    printf("City         : %s\n", ptr->addr.city);
+    printf("Pincode      : %d\n", ptr->addr.pincode);
+
+    return 0;
+}

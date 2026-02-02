@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct contact{
+    long int number;
+    struct contact *next,*previous;//nested 
+};
+int main(){
+    struct contact *ct1=(struct contact*)malloc(sizeof(struct contact));
+    struct contact *ct2=(struct contact*)malloc(sizeof(struct contact));
+    struct contact *ct3=(struct contact*)malloc(sizeof(struct contact));
+ //storing the number
+scanf("%d %d %d",&ct1->number,&ct2->number,&ct3->number);
+//interconnection
+ct1->previous=NULL;
+ct1->next=ct2;
+ct2->previous=ct1;
+ct2->next=ct3;
+ct3->previous=ct2;
+ct3->next=NULL;
+//pointing head
+struct contact *head=ct1;
+
+printf("Contact:\n");
+while (head!=NULL){
+    printf("%ld<------>",head->number);
+    head=head->next;
+}
+printf("NULL");
+return 0;
+}

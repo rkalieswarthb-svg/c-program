@@ -1,0 +1,30 @@
+#include<stdio.h>
+struct address{
+    char ad[45];
+    int pincode;
+};
+struct details{
+    int id;
+    char name[50];
+    struct address add;
+};
+int main (){
+    struct details s;
+    struct details *ptr;
+    ptr=&s;
+    printf("Enter the name of the student:");
+    scanf("%s",ptr->name);
+    printf("Enter the student id:");
+    scanf("%d",&ptr->id);
+    printf("Enter the address:");
+    scanf("%s",ptr->add.ad);
+    printf("Enter the pincode :");
+    scanf("%d",&ptr->add.pincode);
+    
+    printf("----student details----\n");
+    printf("Name=%s\n",ptr->name);
+    printf("ID=%d\n",ptr->id);
+    printf("Address=%s\n",ptr->add.ad);
+    printf("Pincode=%d\n",ptr->add.pincode);
+    return 0;
+}

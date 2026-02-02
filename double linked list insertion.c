@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct contact {
+    long int number;
+    struct contact *next;
+    struct contact *previous;
+};
+// insert at end
+void insert_end(struct contact **head, long int num) {
+    struct contact *newnode = (struct contact *)malloc(sizeof(struct contact));
+    newnode->number = num;
+    newnode->next = NULL;
+    // if list is empty
+    if (*head == NULL) {
+        newnode->previous = NULL;
+        *head = newnode;
+        return;
+    }
+    struct contact *temp = *head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newnode;
+    newnode->previous = temp;
+}
+void display(struct contact *head) {
+    while (head != NULL) {
+        printf("%ld <-> ", head->number);
+        head = head->next;
+    }
+    printf("NULL\n");
+}
+int main() {
+    struct contact *head = NULL;
+    long int new_number;
+
+    insert_end(&head, 9876543210);
+    insert_end(&head, 9123456789);
+    insert_end(&head, 9000012345);
+
+    printf("Doubly Linked List before insertion:\n");
+    display(head);
+
+    // insert new element
+    printf("\nEnter a new contact number to insert: ");
+    scanf("%ld", &new_number);
+
+    insert_end(&head, new_number);
+
+    printf("\nDoubly Linked List after insertion:\n");
+    display(head);
+
+    return 0;
+}
